@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Fake News📰 Detection System</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+</head>
+
+<body>
+	<header>
+		<div class="w3-top">
+			<div class="w3-bar w3-red w3-card w3-left-align w3-large">
+				<a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red "
+					href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i
+						class="fa fa-bars"></i></a>
+				<a href="#1" class="w3-bar-item w3-button w3-padding-large w3-white ">
+					Home
+				</a>
+				<a href="#2" class=" w3-bar-item w3-button w3-hide-small w3-padding-large ">
+					Search
+				</a>
+				<a href="#3" class=" w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white ">About Us</a>
+			</div>
+			<!-- Navbar on small screens -->
+			<div id="navDemo" class=" w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large ">
+				<a href="#" class="w3-bar-item w3-button w3-padding-large">Search</a>
+				<a href="#" class="w3-bar-item w3-button w3-padding-large">About Us</a>
+			</div>
+		</div>
+	</header>
+	<!-- Header -->
+	<header id="1" class="w3-container w3-red w3-center" style="padding: 128px 16px">
+		<h1 class="w3-margin w3-jumbo">FIND</h1>
+		<p class="w3-xlarge">
+			Not a new concept, "fake news" refers to intentionally and verifiably
+			false stories that are largely disseminated through social media
+			networks. It can be very persuasive and thereforeit is necessary to
+			develop strategies to identify and critically assess news you read on
+			social media.
+		</p>
+		<button class="w3-button w3-black w3-padding-large w3-large w3-margin-top">
+			SEARCH
+		</button>
+	</header>
+	<section id="2" >
+		<div class="login">
+			<div class="left_side_grid">
+				<h1>Search</h1>
+				
+				<form action="{{ url_for('predict')}}" method="POST">
+					<textarea name="message" rows="6" cols="50" required="required" style="font-size: 18pt"></textarea>
+				
+				
+					<br> </br>
+				
+					<button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+				
+				
+					<div class="results">
+				
+						{% if prediction == ['FAKE']%}
+						<h2 style="color:red;">Looking Spam⚠️News📰 </h2>
+						{% elif prediction == ['REAL']%}
+						<h2 style="color:green;"><b>Looking Real News📰</b></h2>
+						{% endif %}
+					</div>
+				
+				</form>
+			</div>
+			<div class="right_side_grid">
+				Idhar pic daal dena
+			</div>
+		</div>
+	</section>
+		<!-- Second Grid -->
+		<div id="3" class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
+			<div class="w3-content">
+				<div class="w3-third w3-center">
+					<h3>Meet The Team</h3>
+					<div class="pp">
+						<img style="padding-right: 4px" src="IMAGES/2.jpg" alt="mental2" />
+						<img style="padding-left: 4px" src="IMAGES/3.jpg" alt="mental3" />
+					</div>
+					<div class="name">
+						<h4>&emsp;Ridhi Bansal&emsp;&emsp;&ensp;</h4>
+						<h4>Sunidhi</h4>
+					</div>
+				</div>
+		
+				<div class="w3-twothird">
+					<h2>About FND</h2>
+					<h5 class="w3-padding-32">
+						The purpose FND is to come up with a solution that can be utilized
+						by users to detect and filter out sites containing false and
+						misleading information. We use simple and carefully selected
+						features of the title and post to accurately identify fake posts.
+					</h5>
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<footer class="w3-container w3-padding-64 w3-center w3-opacity">
+			<div class="w3-xlarge w3-padding-32">
+				<i class="fa fa-facebook-official w3-hover-opacity"></i>
+				<i class="fa fa-instagram w3-hover-opacity"></i>
+				<i class="fa fa-snapchat w3-hover-opacity"></i>
+				<i class="fa fa-pinterest-p w3-hover-opacity"></i>
+				<i class="fa fa-twitter w3-hover-opacity"></i>
+				<i class="fa fa-linkedin w3-hover-opacity"></i>
+			</div>
+		</footer>
+
+ 
+</body>
